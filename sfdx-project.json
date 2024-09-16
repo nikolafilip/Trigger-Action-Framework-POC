@@ -1,7 +1,9 @@
 {
   "packageDirectories": [
     { "path": "force-app", "default": true }, 
-    { "path": "trigger-actions-framework" }
+    { "path": "packages/trigger-actions-framework" },
+    { "path": "packages/opportunity-automation" },
+    { "path": "packages/lead-automation" }
   ],
   "name": "Trigger Action Framework POC",
   "namespace": "",
