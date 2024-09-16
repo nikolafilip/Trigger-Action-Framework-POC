@@ -1,9 +1,7 @@
 {
   "packageDirectories": [
-    {
-      "path": "force-app",
-      "default": true
-    }
+    { "path": "force-app", "default": true }, 
+    { "path": "trigger-actions-framework" }
   ],
   "name": "Trigger Action Framework POC",
   "namespace": "",
