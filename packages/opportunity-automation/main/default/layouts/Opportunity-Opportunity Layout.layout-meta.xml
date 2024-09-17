@@ -36,6 +36,10 @@
                 <behavior>Edit</behavior>
                 <field>Region__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_Product_Value__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
