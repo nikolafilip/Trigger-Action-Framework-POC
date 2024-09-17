@@ -8,12 +8,12 @@ public class POC_Opportunity_RiskScoreTest {
         Id fakeOpportunityId2 = TriggerTestUtility.getFakeId(Opportunity.SObjectType);
 
         // Simulate the original state of Opportunities
-        Opportunity oppOld1 = new Opportunity(Id = fakeOpportunityId1, StageName = 'Prospecting', CloseDate = Date.today().addDays(30), Amount = 50000);
-        Opportunity oppOld2 = new Opportunity(Id = fakeOpportunityId2, StageName = 'Qualification', CloseDate = Date.today().addDays(60), Amount = 75000);
+        Opportunity oppOld1 = new Opportunity(Id = fakeOpportunityId1, StageName = POC_Opportunity_Service.STAGE_PROSPECTING, CloseDate = Date.today().addDays(30), Amount = 50000);
+        Opportunity oppOld2 = new Opportunity(Id = fakeOpportunityId2, StageName = POC_Opportunity_Service.STAGE_QUALIFICATION, CloseDate = Date.today().addDays(60), Amount = 75000);
 
         // Simulate the updated state of Opportunities
-        Opportunity oppNew1 = new Opportunity(Id = fakeOpportunityId1, StageName = 'Closed Won', CloseDate = Date.today().addDays(25), Amount = 100000);
-        Opportunity oppNew2 = new Opportunity(Id = fakeOpportunityId2, StageName = 'Closed Lost', CloseDate = Date.today().addDays(60), Amount = 75000);  // Only stage changed
+        Opportunity oppNew1 = new Opportunity(Id = fakeOpportunityId1, StageName = POC_Opportunity_Service.STAGE_CLOSED_WON, CloseDate = Date.today().addDays(25), Amount = 100000);
+        Opportunity oppNew2 = new Opportunity(Id = fakeOpportunityId2, StageName = POC_Opportunity_Service.STAGE_CLOSED_LOST, CloseDate = Date.today().addDays(60), Amount = 75000);  // Only stage changed
 
         List<Opportunity> oldList = new List<Opportunity>{oppOld1, oppOld2};
         List<Opportunity> newList = new List<Opportunity>{oppNew1, oppNew2};
@@ -37,8 +37,8 @@ public class POC_Opportunity_RiskScoreTest {
         Id fakeOpportunityId2 = TriggerTestUtility.getFakeId(Opportunity.SObjectType);
 
         // Simulate new Opportunities being inserted
-        Opportunity oppNew1 = new Opportunity(Id = fakeOpportunityId1, StageName = 'Prospecting', CloseDate = Date.today().addDays(30), Amount = 50000);
-        Opportunity oppNew2 = new Opportunity(Id = fakeOpportunityId2, StageName = 'Qualification', CloseDate = Date.today().addDays(60), Amount = 75000);
+        Opportunity oppNew1 = new Opportunity(Id = fakeOpportunityId1, StageName = POC_Opportunity_Service.STAGE_PROSPECTING, CloseDate = Date.today().addDays(30), Amount = 50000);
+        Opportunity oppNew2 = new Opportunity(Id = fakeOpportunityId2, StageName = POC_Opportunity_Service.STAGE_QUALIFICATION, CloseDate = Date.today().addDays(60), Amount = 75000);
 
         List<Opportunity> newList = new List<Opportunity>{oppNew1, oppNew2};
 
@@ -57,10 +57,10 @@ public class POC_Opportunity_RiskScoreTest {
     @IsTest
     static void testRiskScoreCalculation() {
         // Insert Opportunities with CloseDate
-        Opportunity opp1 = new Opportunity(Name = 'Opportunity 1', StageName = 'Prospecting', CloseDate = Date.today().addDays(30), Amount = 50000);
-        Opportunity opp2 = new Opportunity(Name = 'Opportunity 2', StageName = 'Qualification', CloseDate = Date.today().addDays(60), Amount = 75000);
-        Opportunity opp3 = new Opportunity(Name = 'Opportunity 3', StageName = 'Closed Won', CloseDate = Date.today().addDays(91), Amount = 150000);
-        Opportunity opp4 = new Opportunity(Name = 'Opportunity 4', StageName = 'Closed Lost', CloseDate = Date.today().addDays(-10), Amount = 200000);
+        Opportunity opp1 = new Opportunity(Name = 'Opportunity 1', StageName = POC_Opportunity_Service.STAGE_PROSPECTING, CloseDate = Date.today().addDays(30), Amount = 50000);
+        Opportunity opp2 = new Opportunity(Name = 'Opportunity 2', StageName = POC_Opportunity_Service.STAGE_QUALIFICATION, CloseDate = Date.today().addDays(60), Amount = 75000);
+        Opportunity opp3 = new Opportunity(Name = 'Opportunity 3', StageName = POC_Opportunity_Service.STAGE_CLOSED_WON, CloseDate = Date.today().addDays(91), Amount = 150000);
+        Opportunity opp4 = new Opportunity(Name = 'Opportunity 4', StageName = POC_Opportunity_Service.STAGE_CLOSED_LOST, CloseDate = Date.today().addDays(-10), Amount = 200000);
         insert new List<Opportunity>{opp1, opp2, opp3, opp4};
 
         // Insert Products and PricebookEntry

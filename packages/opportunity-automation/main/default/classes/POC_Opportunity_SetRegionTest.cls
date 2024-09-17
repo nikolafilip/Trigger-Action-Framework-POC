@@ -9,8 +9,8 @@ public class POC_Opportunity_SetRegionTest {
         Id fakeAccountIdTX = TriggerTestUtility.getFakeId(Account.SObjectType);
         
         // Simulate account data with different billing states
-        Account accountWithCA = new Account(Id = fakeAccountIdCA, BillingState = 'CA');
-        Account accountWithNY = new Account(Id = fakeAccountIdNY, BillingState = 'NY');
+        Account accountWithCA = new Account(Id = fakeAccountIdCA, BillingState = POC_Opportunity_Service.STATE_CA);
+        Account accountWithNY = new Account(Id = fakeAccountIdNY, BillingState = POC_Opportunity_Service.STATE_NY);
         Account accountWithTX = new Account(Id = fakeAccountIdTX, BillingState = 'TX');
 
         // Populate the singleton with test data
@@ -42,9 +42,9 @@ public class POC_Opportunity_SetRegionTest {
         System.assertEquals(POC_Opportunity_Service.REGION_CENTRAL, oppTX.Region__c, 'Region should be set to Central for TX billing state');
         
         // Simulate a change in BillingState on the Account for update scenario
-        accountWithCA.BillingState = 'NY';
+        accountWithCA.BillingState = POC_Opportunity_Service.STATE_NY;
         accountWithNY.BillingState = 'TX';
-        accountWithTX.BillingState = 'CA';
+        accountWithTX.BillingState = POC_Opportunity_Service.STATE_CA;
 
         // Update the singleton with the modified Account data
         POC_Opportunity_Queries.getInstance().beforeAccountMap = new Map<Id, Account>{
