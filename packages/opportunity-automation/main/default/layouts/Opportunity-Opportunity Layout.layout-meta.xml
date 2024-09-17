@@ -40,6 +40,10 @@
                 <behavior>Readonly</behavior>
                 <field>Total_Product_Value__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Risk_Score__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
