@@ -7,6 +7,10 @@ public class POC_Opportunity_RiskCalculator implements TriggerAction.DmlFinalize
         toProcess.addAll(opportunities);
     }
 
+    public static List<Opportunity> getRegisteredOpportunities() {
+        return new List<Opportunity>(toProcess);
+    }
+
     // DML Finalizer logic: Enqueue the job to recalculate risk score
     public void execute(FinalizerHandler.Context context) {
         if (!toProcess.isEmpty()) {

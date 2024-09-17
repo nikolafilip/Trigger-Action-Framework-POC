@@ -10,6 +10,7 @@ public class POC_Opportunity_Queries {
         return POC_Opportunity_Queries.instance;
     }
 
+    @TestVisible
     public Map<Id, Account> beforeAccountMap { get; private set; }
 
     public class Service implements TriggerAction.BeforeInsert, TriggerAction.BeforeUpdate {
