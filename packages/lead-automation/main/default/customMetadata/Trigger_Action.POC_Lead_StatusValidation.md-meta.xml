@@ -44,7 +44,7 @@
     </values>
     <values>
         <field>Bypass_Permission__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">POC_Lead_BypassStatusValidation</value>
     </values>
     <values>
         <field>Description__c</field>
